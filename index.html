@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MeteoServ — AWOS</title>
+
+        <!-- Tipografías desde Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,wght@0,300;0,700;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+        <!-- Nuestros estilos -->
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+
+    <body>
+        <!-- Encabezado -->
+        <header class="header">
+            <div class="header-inner">
+                <div class="brand">
+                    <span class="brand-icon">@</span>
+                    <span class="brand-name">MeteoServ</span>
+                    <span class="brand-tag">AWOS | v1.0</span>
+                </div>
+                <nav class="nav">
+                    <a href="#servicio" class="nav-link active">Servicios</a>
+                    <a href="#info" class="nav-link">¿Qué es SOA?</a>
+                    <a href="#arquitectura" class="nav-link">Arquitectura</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Sección principal del servicio -->
+
+        <section class="section" id="servicio">
+            <div class="container">
+
+                <!-- Tarjeta del servicio -->
+                <div class="service-card">
+
+                    <!-- Encabezado de la tarjeta -->
+                    <div class="service-card-header">
+                        <span class="chip">Servicio 1</span>
+                        <h2 class="service-tittle">Consulta Meteorológica</h2>
+                        <p class="service-desc">Ingresa una ciudad para obtener datos en tiempo real.</p>
+                    </div>
+
+                    <!-- Campo de búsqueda -->
+                    <div class="search-row">
+                        <input
+                            type="text"
+                            id="cityInput"
+                            class="search-input"
+                            placeholder="Ej: Ciudad de México, Londres, Tokyo..."
+                        />
+                        <button id="searchBtn" class="btn-primary" onclick="buscarClima()">Consultar</button>
+                    </div>
+
+                    <!-- Mensajes de error -->
+                    <div id="error-box" class="error-box hidden">
+                        <span class="error-icon">⚠</span>
+                        <span id="error-msg"></span>
+                    </div>
+
+                    <!-- Estado inicial vacío -->
+                    <div id="empty-state" class="empty-state">
+                        <div class="empty-icon">☁</div>
+                        <p>Escribe una ciudad y presiona <strong>Consultar</strong>.</p>
+                    </div>
+
+                    <!-- Indicador de carga -->
+                    <div id="loader" class="loader hidden">
+                        <div class="loader-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <p>Consumiendo servicio REST…</p>
+                    </div>
+
+                    <!-- Panel de resultados -->
+                    <div id="result-panel" class="result-panel hidden">
+                        <div class="result-header">
+                            <div class="result-city">
+                                <h3 id="res-city">—</h3>
+                                <p id="res-country">—</p>
+                            </div>
+                                <div class="result-temp">
+                                <span id="res-temp">—</span>
+                                <span class="temp-unit">°C</span>
+                            </div>
+                        </div>
+
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <span class="result-label">Condición</span>
+                                <span class="result-value" id="res-desc">—</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Sensación térmica</span>
+                                <span class="result-value" id="res-feels">—</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Humedad</span>
+                                <span class="result-value" id="res-humidity">—</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Viento</span>
+                                <span class="result-value" id="res-wind">—</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Presión</span>
+                                <span class="result-value" id="res-pressure">—</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Visibilidad</span>
+                                <span class="result-value" id="res-visibility">—</span>
+                            </div>
+                        </div>
+
+                        <!-- Traza de la petición REST -->
+                        <div class="api-trace">
+                            <p class="trace-title">Traza de petición REST <span class="chip chip-sm">GET</span></p>
+                            <div class="trace-box">
+                                <span class="trace-label">Endpoint:</span>
+                                <code id="trace-url">—</code>
+                            </div>
+                            <div class="trace-box">
+                                <span class="trace-label">Estado HTTP:</span>
+                                <code id="trace-status">—</code>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- fin .service-card -->
+            </div><!-- fin .container -->
+        </section>
+
+        <!-- Nuestro JavaScript -->
+        <script src="js/app.js"></script>
+        
+    </body>
+</html>

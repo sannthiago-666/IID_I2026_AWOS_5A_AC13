@@ -1,0 +1,350 @@
+    /* Variables globales — paleta de colores y medidas */
+    :root {
+    --bg: #0a0a0f;           /* fondo principal */
+    --bg-2: #13131a;         /* fondo de tarjetas */
+    --bg-3: #1a1a24;         /* fondo de inputs */
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.14);
+    --text-1: #f0eff5;       /* texto principal */
+    --text-2: #9896a8;       /* texto secundario */
+    --text-3: #5c5b6b;       /* texto tenue */
+    --accent: #7c6aff;       /* color de acento (morado) */
+    --accent-glow: rgba(124,106,255,0.18);
+    --accent-light: #a99fff;
+    --green: #3ecf8e;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 22px;
+    }
+
+    /* Reset básico — elimina márgenes y padding predeterminados */
+    *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    }
+
+    /* Estilos base del body */
+    body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-1);
+    line-height: 1.6;
+    min-height: 100vh;
+    }
+    
+    /* ── ENCABEZADO ──────────────────── */
+    .header {
+    position: sticky;        /* se queda pegado arriba al hacer scroll */
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
+    background: rgba(10,10,15,0.88);
+    backdrop-filter: blur(12px); /* efecto de vidrio esmerilado */
+    }
+
+    .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* brand a la izquierda, nav a la derecha */
+    }
+
+    .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    }
+
+    .brand-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    }
+
+    .brand-icon { color: var(--accent); }
+
+    .brand-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--text-3);
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+    border-radius: 99px;
+    }
+
+    .nav { display: flex; gap: 4px; }
+
+    .nav-link {
+    font-size: 0.82rem;
+    color: var(--text-2);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+    color: var(--text-1);
+    background: var(--bg-3);
+    }
+
+    /* ── SECCIONES ───────────────────── */
+    .section { padding: 4rem 2rem; }
+    .container { max-width: 900px; margin: 0 auto; }
+
+    /* ── TARJETA DEL SERVICIO ─────────── */
+    .service-card {
+    background: var(--bg-2);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    }
+
+    .service-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0.4rem 0 0.5rem;
+    }
+
+    .service-desc { color: var(--text-2); font-size: 0.9rem; }
+
+    /* ── ENCABEZADO DE TARJETA ───────── */
+    .service-card-header { margin-bottom: 1.8rem; }
+
+    /* ── CHIP (etiqueta pequeña) ─────── */
+    .chip {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    background: rgba(124,106,255,0.18);
+    color: #a99fff;
+    border: 1px solid rgba(124,106,255,0.3);
+    border-radius: 99px;
+    padding: 3px 10px;
+    }
+
+    /* ── BÚSQUEDA ─────────────────────── */
+    .search-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.2rem;
+    }
+
+    .search-input {
+    flex: 1;
+    background: var(--bg-3);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    color: var(--text-1);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    }
+
+    .search-input::placeholder { color: var(--text-3); }
+    .search-input:focus { border-color: var(--accent); }
+
+    /* ── BOTÓN PRINCIPAL ─────────────── */
+    .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.7rem 1.4rem;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-primary:active { transform: scale(0.97); }
+    .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* ── CLASE UTILITARIA ─────────────── */
+    .hidden { display: none !important; }
+
+    /* ── ERROR ───────────────────────── */
+    .error-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,107,107,0.1);
+    border: 1px solid rgba(255,107,107,0.25);
+    border-radius: var(--radius-md);
+    color: #ff6b6b;
+    font-size: 0.875rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    }
+
+    /* ── ESTADO VACÍO ─────────────────── */
+    .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-3);
+    }
+    .empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+    opacity: 0.4;
+    }
+
+    /* ── LOADER (puntos animados) ─────── */
+    .loader {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--text-2);
+    font-size: 0.85rem;
+    }
+    .loader-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 0.8rem;
+    }
+    .loader-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: bounce 1.2s infinite ease-in-out;
+    }
+    .loader-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .loader-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+    40%           { transform: scale(1);   opacity: 1;   }
+    }
+
+    /* ── PANEL DE RESULTADOS ─────────── */
+    .result-panel {
+    animation: fadeUp 0.35s ease;
+    }
+
+    @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    .result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.2rem;
+    margin-bottom: 1.2rem;
+    }
+
+    .result-city h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    }
+
+    .result-city p {
+    font-size: 0.8rem;
+    color: var(--text-2);
+    font-family: 'DM Mono', monospace;
+    }
+
+    .result-temp {
+    display: flex;
+    align-items: flex-start;
+    gap: 2px;
+    }
+
+    .result-temp span:first-child {
+    font-family: 'Fraunces', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #a99fff;
+    }
+
+    .temp-unit {
+    font-size: 1.4rem;
+    color: var(--text-2);
+    margin-top: 6px;
+    }
+
+    .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    }
+
+    .result-item {
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 0.75rem;
+    }
+
+    .result-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-3);
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+    }
+
+    .result-value {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    }
+
+    /* ── TRAZA DE API ─────────────────── */
+    .api-trace {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.2rem;
+    }
+
+    .trace-title {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-2);
+    margin-bottom: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    }
+
+    .trace-box {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+    }
+
+    .trace-label {
+    font-size: 0.72rem;
+    color: var(--text-3);
+    min-width: 110px;
+    }
+
+    code {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--green);
+    word-break: break-all;
+    }
